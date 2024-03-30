@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils.html import mark_safe
 
@@ -186,7 +187,10 @@ class ProdutoFotos(models.Model):
 
     def image_tag(self):
         if self.foto:
-            return mark_safe('<img src="/%s" width="200" height="150" />' % (self.foto))
+            if settings.ONLINE:
+                return mark_safe('<img src="/saborpaulista/%s" width="200" height="150" />' % (self.foto))
+            else:
+                return mark_safe('<img src="/%s" width="200" height="150" />' % (self.foto))
         else:
             return ""
 
@@ -217,7 +221,10 @@ class Parceiros(models.Model):
 
     def image_tag(self):
         if self.logotipo:
-            return mark_safe('<img src="/%s" width="200" height="80" />' % (self.logotipo))
+            if settings.ONLINE:
+                return mark_safe('<img src="/saborpaulista/%s" width="200" height="80" />' % (self.logotipo))
+            else:
+                return mark_safe('<img src="/%s" width="200" height="80" />' % (self.logotipo))
         else:
             return ""
 
@@ -235,7 +242,11 @@ class Galeria(models.Model):
 
     def image_tag(self):
         if self.imagem:
-            return mark_safe('<img src="/%s" width="200" height="150" />' % (self.imagem))
+
+            if settings.ONLINE:
+                return mark_safe('<img src="/saborpaulista/%s" width="200" height="150" />' % (self.imagem))
+            else:
+                return mark_safe('<img src="/%s" width="200" height="150" />' % (self.imagem))
         else:
             return ""
 

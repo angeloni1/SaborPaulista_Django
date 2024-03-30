@@ -100,6 +100,9 @@ EMAIL_HOST_PASSWORD = config("MAIL_PASS")
 EMAIL_USE_TLS = False
 EMAIL_PORT = 587  # new
 
+URL_PREFIX = config("URL_PREFIX")
+ONLINE = config("ONLINE", cast=bool, default=True)
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 

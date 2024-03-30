@@ -85,3 +85,8 @@ urlpatterns = [
     path('contato/', include('contato.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+if settings.ONLINE:
+    print("url sbp")
+    urlpatterns = [path(f'{settings.URL_PREFIX}/', include(urlpatterns))]
+
+
