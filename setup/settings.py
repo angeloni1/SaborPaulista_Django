@@ -62,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'setup.urls'
@@ -95,7 +96,7 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"  # new
 DEFAULT_FROM_EMAIL = "naoresponda@collegare.com.br"
 EMAIL_HOST = "smtp.collegare.com.br"
 EMAIL_HOST_USER = "naoresponda@collegare.com.br"  # new
-EMAIL_HOST_PASSWORD = "password"  # new
+EMAIL_HOST_PASSWORD = config("MAIL_PASS")
 EMAIL_USE_TLS = False
 EMAIL_PORT = 587  # new
 
@@ -108,6 +109,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+STATIC_ROOT = 'assets'
 
 
 # Password validation

@@ -33,7 +33,7 @@ class ContatoForm(forms.Form):
     email = forms.EmailField(max_length = 100, label='', widget=forms.TextInput(attrs={ "class": "form-control my-10 ms2", "placeholder": "E-mail"}))
     # TIPO_CONTATO = (('', 'Tipo de Contato'), ('1', 'Consumidor'),('2', 'Empresa'),('3', 'Fornecedor'),)
     TIPO_CONTATO = (('', 'Tipo de Contato'), ('Consumidor', 'Consumidor'),('Empresa', 'Empresa'),('Fornecedor', 'Fornecedor'),)
-    mensagem = forms.CharField(max_length=300, label='', widget=forms.Textarea(attrs={ "class": "form-control my-10 fs", "placeholder": "Mensagem"}), required=True)
+    mensagem = forms.CharField(max_length=300, label='', widget=forms.Textarea(attrs={ "class": "form-control my-10 fs fix-textarea", "placeholder": "Mensagem"}), required=True)
     tipo = forms.ChoiceField(label='', choices=TIPO_CONTATO, widget=forms.Select(attrs={ "class": " my-10 fs", "placeholder": "Mensagem"}), required=True) 
     captcha = ReCaptchaField(label='',  widget=ReCaptchaV2Checkbox( attrs={ "class": "g-recaptcha fs2"} ))
 

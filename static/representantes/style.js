@@ -106,6 +106,7 @@
                     newDocument =
                     `
                         <div class="d-flex flex-wrap -mx-4">
+                        <a href="${data[i].enderecomaps}" target="_blank">
                         <div class="col-4">
                         <div class="col-12 px-4 manu" data-eva="${data[i].nome}">
                         <div id="documentoContainer" class="h-full p-4 text-center rounded-md hover:shadow-xl transition duration-200">
@@ -119,12 +120,11 @@
 
                       
                         <br/><p> ${data[i].email}</p><br/>
-                        <p> ${data[i].endereco}</p>
-                        
+                        <p> ${data[i].endereco} • ${data[i].cep} • ${data[i].cidade} / ${data[i].estado} </p>
                         </div>
-
                         </div>
                         </div> 
+                        </a>
                         </div>
                         `
                 }
@@ -158,3 +158,19 @@
                 });
           
         }
+
+
+function setVideoModal(url) {
+    $("#iframe_video").attr('src', url);
+    $("#modalVideo").modal('show');
+    // $("#iframe_video").css('width', '80vw');
+    $("#iframe_video").addClass('modal-lg')
+    $("#iframe_video").css('height', '80vh');
+
+}
+
+$('#modalVideo').on('hidden.bs.modal', function () {
+  // do something…
+
+    $("#iframe_video").attr('src', '');
+})

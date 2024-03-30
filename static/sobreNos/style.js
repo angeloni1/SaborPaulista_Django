@@ -1,3 +1,4 @@
+                 
                  var controlTop = true;
 
                     $(window).on("load scroll", lightBoxActivate());
@@ -172,6 +173,7 @@
                     function resposiveSwiper() {
                         var largura = window.innerWidth;
                         console.log("sdsfdsfdsfdf");
+                        console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         
                         if (largura < 768) {
                             var swiper = new Swiper(".mySwiper", {
@@ -197,8 +199,8 @@
                         } else {
         
                             var swiper = new Swiper(".mySwiper", {
-                                slidesPerView: 4,
-                                spaceBetween: 200,
+                                slidesPerView: 5,
+                                spaceBetween: 50,
                                 slidesPerGroup: 1,
                                 speed: 3500,
                                 loop: true,
@@ -220,4 +222,12 @@
                     }
                     window.addEventListener('resize', resposiveSwiper);
         resposiveSwiper();       
-        
+
+         $(document).ready(function () {
+            $('.dotdotdot').dotdotdot({
+                /* Opções */
+                ellipsis: '...', // Texto a ser adicionado ao truncamento
+                height: 40, // Altura máxima do elemento (em pixels)
+                watch: 'window', // Opção para redotar o texto quando a janela for redimensionada
+            });
+        });

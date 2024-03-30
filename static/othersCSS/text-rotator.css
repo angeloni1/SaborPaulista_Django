@@ -21,6 +21,7 @@
   .cd-headline {
     font-size: 3rem;
     line-height: 1.2;
+    display: flex;
   }
   @media only screen and (min-width: 768px) {
     .cd-headline {
@@ -736,6 +737,7 @@
     -webkit-perspective: 300px;
     -moz-perspective: 300px;
     perspective: 300px;
+    display: flex;
   }
   .cd-headline.zoom b {
     opacity: 0;

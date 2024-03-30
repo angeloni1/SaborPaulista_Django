@@ -20,7 +20,7 @@ from django.conf import settings
 
 from django.conf.urls.static import static
 from rest_framework import routers, serializers, viewsets
-from home.models import Documents, Representantes
+from home.models import Documents, Representantes, OndeComprar
 import django_filters.rest_framework
 from rest_framework import generics
 from rest_framework import filters
@@ -53,10 +53,25 @@ class RepresentantesViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['nome', 'cidade', 'cep']
 
+class OndeComprarSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OndeComprar 
+        fields = '__all__'
+
+# ViewSets define the view behavior.
+class OndeComprarViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = OndeComprar.objects.all()
+    serializer_class = OndeComprarSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['cidade', 'estado']
+
+
+
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'documents', DocumentsViewSet)
 router.register(r'representantes', RepresentantesViewSet)
+router.register(r'ondecomprar', OndeComprarViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

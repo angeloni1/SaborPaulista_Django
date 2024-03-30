@@ -167,14 +167,30 @@ class Tabelanutricionals(models.Model):
         return str(self.id)
 
 class ProdutoFotos(models.Model):
+    TIPO_PRODUTO = (
+    ("natura", "In Natura"),
+    ("assado", "Assado"),
+    )
+
     produtoid = models.ForeignKey(Products, on_delete=models.CASCADE)
     foto = models.ImageField(upload_to='images/')
 
+    tipo = models.CharField(max_length=9,
+                  choices=TIPO_PRODUTO)
+    
     def __str__(self) -> str:
         return str(self.id)
 
     class Meta:
         verbose_name_plural = "Produtos - Fotos"
+
+    def image_tag(self):
+        if self.foto:
+            return mark_safe('<img src="/%s" width="200" height="150" />' % (self.foto))
+        else:
+            return ""
+
+    image_tag.short_description = 'Image'
 
 class Videos(models.Model):
     # id = models.AutoField(db_column='Id', primary_key=True, blank=True, null=True)  # Field name made lowercase.
@@ -200,7 +216,10 @@ class Parceiros(models.Model):
         return str(self.id)
 
     def image_tag(self):
-        return mark_safe('<img src="/%s" width="200" height="80" />' % (self.logotipo))
+        if self.logotipo:
+            return mark_safe('<img src="/%s" width="200" height="80" />' % (self.logotipo))
+        else:
+            return ""
 
     image_tag.short_description = 'Image'
 
@@ -215,6 +234,26 @@ class Galeria(models.Model):
         return str(self.id)
 
     def image_tag(self):
-        return mark_safe('<img src="/%s" width="200" height="150" />' % (self.imagem))
+        if self.imagem:
+            return mark_safe('<img src="/%s" width="200" height="150" />' % (self.imagem))
+        else:
+            return ""
 
     image_tag.short_description = 'Image'
+
+class OndeComprar(models.Model):
+    nome = models.CharField(db_column='Nome', max_length=50)  # Field name made lowercase.
+    endereco = models.CharField(max_length=255)
+    cep = models.CharField(max_length=9)
+    cidade = models.CharField(db_column='Cidade', max_length=50)  # Field name made lowercase.
+    estado = models.CharField(db_column='Estado', max_length=2)  # Field name made lowercase.
+    email = models.CharField(db_column='Email', max_length=100)  # Field name made lowercase.
+    tel = models.CharField(db_column='Tel', blank=True, null=True, max_length=25)  # Field name made lowercase.
+    cel = models.CharField(db_column='Cel', max_length=25)  # Field name made lowercase.
+    enderecomaps = models.CharField(db_column='EnderecoMaps', blank=True, null=True, max_length=255)  # Field name made lowercase.
+
+    def __str__(self) -> str:
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Onde Comprar"

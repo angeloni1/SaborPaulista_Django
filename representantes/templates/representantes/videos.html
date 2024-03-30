@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'representantes/style.css' %}"/>
+<link rel="stylesheet" href="{% static 'products/main.css'%}">
+
+
+{% endblock head %}
+
+
+{% block content %}
+
+
+    <div class="size-a-1 flex-col-c-m p-b-20" style="padding-top: 100px; padding-bottom:80px;">
+        <div class="txt-center txt-m-201 cl10 how-pos1-parent m-b-14">
+            Sabor Paulista
+            <div class="how-pos1">
+                <img src="{% static 'img/symbol-02.png'%}" alt="IMG">
+            </div>
+        </div>
+        <h3 class="txt-center txt-l-101 cl3 respon1" style="text-transform:none;">
+            Confira nosso acervo de vídeos
+        </h3>
+    </div>
+    <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <iframe width="100%"  id="iframe_video"
+                                    src="https://www.youtube.com/embed/XyrAmspefdg"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen
+                                    style="height:100%;"></iframe>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+    <section class="col-12" style="padding:50px 50px; background: #F7F7F7">
+        <div class="section col-12 d-md-flex flex-wrap container" style="margin-bottom: 100px;">
+            {% for v in videos %}
+            <div class="col-md-4 coluna-video">
+                <h5 class="title-video">{{v.nome}}</h5>
+                <br>
+                <a onclick="setVideoModal('{{v.url}}')" class="link-video">
+                    <img src="{% static 'img/play-youtube.png'%}" class="play" />
+                    <img src="{{v.thumb}}" class="img-fluid thumb p-10" />
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+   
+   
+
+
+<a href="#topo" class="scroll-top" data-target="html" style="position: fixed !important; background-color: #ffb60dbf !important; opacity: 1 !important; position: fixed; right: 50px; bottom: 70px; z-index: 90 !important;">
+    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.0 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="white" d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" /></svg>
+</a>
+
+<!-- Modal HTML Markup -->
+<!--<div id="ModalLoginForm" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Login</h1>
+            </div>
+            <div class="modal-body">
+                <form role="form" method="POST" action="">
+                    <input type="hidden" name="_token" value="">
+                    <div class="form-group">
+                        <label class="control-label">E-Mail Address</label>
+                        <div>
+                            <input type="email" class="form-control input-lg" name="email" value="@ViewBag.Nome">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <div>
+                            <input type="text" class="form-control input-lg" name="password" value="@ViewBag.Preco">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember"> Remember Me
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn-success">Login</button>
+
+                            <a class="btn btn-link" href="">Forgot Your Password?</a>
+                        </div>
+                    </div>
+                </form>
+                <h1>Or Signup!</h1>
+                <form role="form" method="POST" action="">
+                    <input type="hidden" name="_token" value="">
+                    <div class="form-group">
+                        <label class="control-label">Username</label>
+                        <div>
+                            <input type="text" class="form-control input-lg" name="name" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">E-Mail Address</label>
+                        <div>
+                            <input type="email" class="form-control input-lg" name="email" value="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Password</label>
+                        <div>
+                            <input type="password" class="form-control input-lg" name="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Confirm Password</label>
+                        <div>
+                            <input type="password" class="form-control input-lg" name="password_confirmation">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn-success">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>-->
+<!-- /.modal-content -->
+<!--</div>--><!-- /.modal-dialog -->
+<!--</div>--><!-- /.modal -->
+
+
+
+
+{% endblock content %}
+
+
+
+{% block scripts %}
+
+<script src="{% static 'representantes/style.js' %}"></script>
+
+{% endblock scripts %}

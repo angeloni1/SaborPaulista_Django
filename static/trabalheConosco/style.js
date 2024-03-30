@@ -1,4 +1,4 @@
-// alert("OI")
+alert("OI")
 
 console.log("AAAAAAAAAAAAAAAAAAAAAAAAA")
 var upload = document.getElementById("id_curriculo");
@@ -16,7 +16,6 @@ upload.addEventListener("change", function (e) {
 });
 
 $(document).ready(function () {
-        alert("AAA")
     $("form").submit(function() {
     if (window.File && window.FileReader && window.FileList && window.Blob) {
         var file = $('#id_curriculo')[0].files[0];

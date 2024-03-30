@@ -18,7 +18,7 @@
     box-shadow: 0px 0px 10px #ffb60d82;
 }
 .boxShadowHover {
-    background-color: #F7F7F7;
+    background-color: #FFFFFF;
 }
     .boxShadowHover:hover .tpproduct__thumb-img2{
         opacity:0;
@@ -28,10 +28,10 @@ boxShadowHover:hover .tpproduct__thumb-img1 {
 }
     .isotope_selector {
         cursor: pointer;
-        background-color: #F7F7F7;
+        background-color: #FFFFFF;
     }
 .whight-product .tpproduct__content {
-    background-color: #F7F7F7;
+    background-color: #FFFFFF;
 }
 .whight-product .tpproduct {
     border: 1px solid #00000014;
@@ -226,4 +226,39 @@ boxShadowHover:hover .tpproduct__thumb-img1 {
 }
 .arrow-back span {
     transition: all 0s linear !important;
+}
+
+.representante-hl:hover{
+    color: #FFB60D;
+}
+
+.representante-hl:hover p {
+    color: #FFB60D;
+}
+
+.foto-aviso {
+    z-index: -1;
+    position: absolute;
+    opacity: 0;
+    color: transparent;
+    transition: none;
+    margin-top: 165px;
+}
+
+.foto-thumb:hover .foto-aviso {
+    z-index: 1;
+    opacity: 1;
+    position: absolute;
+    text-align: center;
+    background: #ffb60d;
+    /* height: 195px; */
+    height: 30px;
+    width: 195px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    transition: all ease-in 0.3s;
 }

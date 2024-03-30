@@ -23,13 +23,17 @@ class DocumentsAdmin(admin.ModelAdmin):
 class SliderAdmin(admin.ModelAdmin):
     pass
 
+class OndeComprarAdmin(admin.ModelAdmin):
+    pass
+
 class TabelaNutricionalAdmin(admin.ModelAdmin):
     def has_module_permission(self, request):
         return False
 
 
 class ProdutoFotosAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['image_tag',]
+    readonly_fields = ['image_tag']
 
 class VideosAdmin(admin.ModelAdmin):
     pass
@@ -55,3 +59,4 @@ admin.site.register(ProdutoFotos, ProdutoFotosAdmin)
 admin.site.register(Videos, VideosAdmin)
 admin.site.register(Parceiros, ParceirosAdmin)
 admin.site.register(Galeria, GaleriaAdmin)
+admin.site.register(OndeComprar, OndeComprarAdmin)

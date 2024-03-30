@@ -271,7 +271,7 @@
                 </h3>
                 <div style="display:flex; align-items:center; flex-wrap:wrap; text-align:left; width:100%; margin-bottom:12px;">
                     <div class="search col-8 col-md-4 mx-auto" style="display:flex;">
-                        <input style="border: 1px solid rgba(255, 182, 13, 0.75); border-right:none; border-radius: 5px; padding: 8px; background-color: #F7F7F7 !important;" type="text" class="searchTerm col-12" placeholder="Buscar... Nome, Cidade, Estado, Telefone" id="myInput" onkeyup="filtro(this.value)" />
+                        <input style="border: 1px solid rgba(255, 182, 13, 0.75); border-right:none; border-radius: 5px; padding: 8px; background-color: #F7F7F7 !important;" type="text" class="searchTerm col-12" placeholder="Buscar... Nome, Cidade, Estado" id="myInput" onkeyup="filtro(this.value)" />
                         <button style="background-color: rgba(255, 182, 13, 0.75); z-index: 90; position: relative; padding: 9px; margin-left: -8px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; " type="submit" class="searchButton">
                             <i class="fa fa-search" style="color:white;" aria-hidden="true"></i>
                         </button>
@@ -285,7 +285,6 @@
 
                             <div class="col-12 col-md-6 col-lg-4 ">
 
-                                <a href="{{r.enderecomaps}}" target="_blank">
                                     <div class="col-12 px-4 manu" data-eva="@representante.Nome">
                                         <div id="documentoContainer" class="h-full p-4 text-center rounded-md hover:shadow-xl transition duration-200">
                                             <div class="inline-flex h-16 mb-6 items-center justify-center text-white bg-vermelho rounded-lg" style="background-color: rgba(255, 182, 13, 0.75) !important; height: 60px; margin: auto auto; box-sizing: border-box; padding: 15px; width: 60px;">
@@ -304,15 +303,19 @@
 
                                             <br />
 
-                                            <p>{{r.email}}</p>
+                                            <p><a href="mailto:{{r.email}}" target="_blank" class="representante-hl">{{r.email}}</a></p>
                                             <br />
 
+                                            {% if r.enderecomaps %}
+                                            <a href="{{r.enderecomaps}}" target="_blank" class="representante-hl">
+                                                <p> {{r.endereco}} • {{r.cep}} • {{ r.cidade}} / {{r.estado}}</p>
+                                            </a>
+                                        {% else %}
                                             <p> {{r.endereco}} • {{r.cep}} • {{ r.cidade}} / {{r.estado}}</p>
+                                        {% endif %}
 
                                         </div>
-
                                     </div>
-                                </a>
                             </div>
 
                         {% endfor %}

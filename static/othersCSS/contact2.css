@@ -36,7 +36,7 @@ form input:not([type="submit"]):not([type="button"]):not([type="radio"]):not([ty
   display: block;
   margin: 0 auto;
   color: rgba(0, 0, 0, 0.8);
-  padding: 22px 26px;
+  /* padding: 22px 26px; */
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-clip: padding-box;
   box-shadow: none !important;
@@ -13688,4 +13688,16 @@ body.error404 .page-404-default {
 body.error404 .page-404-default .center-404 {
   max-width: 400px;
   margin: 0 auto 36px;
+}
+
+
+a:hover {
+  color: #FFB60D;
+}
+
+a div {
+  transition: all linear 0.3s;
+}
+a:hover div {
+  color: #FFB60D;
 }

@@ -88,7 +88,7 @@ body {
 }
 
 .nav-link:hover {
-    background-color: #FFE500 !important;
+    background-color: #ffc84a !important;
 }
 
 .nav-link-sub:hover {
@@ -529,4 +529,23 @@ body {
     grid-row: 6;
     color: #f00;
     font-weight: 500;
+}
+
+.contat-itens {
+    align-items: flex-start;
+}
+.contato-itens li img {
+    width: 80px;
+}
+
+
+select {
+   padding: 10px;
+    border: 1px solid #bcbcbc;
+    border-radius: 6px; 
+    font-size: 14px;
+}
+
+.fix-textarea {
+    height: 150px !important;
 }

@@ -60,12 +60,14 @@ textarea::placeholder {
 }
     .cadastrarCurriculoBtn:hover {
         background-color: #FFB60D !important;
-        color: white;
+        color: #fff !important;
         border-color: transparent;
     }
     .field-validation-error{
         color:red;
     }
+
+
 form div div div div input{
     border-radius:5px; 
     padding:23px; 
@@ -99,3 +101,14 @@ input::-moz-placeholder {
 }
 
 }
+.form-control{
+    /* font: 0.9rem/3 sans-serif; */
+    font-size: 14px;
+}
+.form-control::placeholder {
+    font: 0.8rem/3 sans-serif;
+    padding: 0;
+    letter-spacing: 0.5px;
+    line-height: inherit;
+}
+

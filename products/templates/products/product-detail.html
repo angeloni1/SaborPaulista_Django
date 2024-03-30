@@ -42,19 +42,24 @@
                                 <img src="../{{produto.foto_principal}}" class="imgCar" alt="Produto" style="width:100%; height:100%;">
                             </div>
                             <div class="thumbnails">
+
+                                <div class="foto-thumb">
+                                    <div class="foto-aviso">Foto Conceitual</div>
+                                    <img src="../{{produto.foto_principal}}" alt="Thumbnail 1" class="thumbnail active">
+                                </div>
                                 {% for f in fotos%} 
-                                     {% if forloop.first %}
-                                        <img src="../{{f.foto}}" alt="Thumbnail 1" class="thumbnail active">
-                                    
-                                    {% else %}
-                                        <img src="../{{f.foto}}" alt="Thumbnail 2" class="thumbnail">
-                                        <img src="../{{f.foto}}" alt="Thumbnail 3" class="thumbnail">
-                                    {% endif %}
-                                {% comment %} <img src="{% static 'img/girl.jpg'%}" alt="Thumbnail 1" class="thumbnail"> 
+                                        {%if f.tipo == 'assado'%}
+                                        <div class="foto-thumb">
+                                            <div class="foto-aviso">Produto Assado</div>
+                                            <img src="../{{f.foto}}" alt="Thumbnail 2" class="thumbnail">
+                                        </div>
 
-                                 <img src="{% static 'img/beneficios.jpg'%}" alt="Thumbnail 2" class="thumbnail"> 
-                                 <img src="{% static 'img/exportacao.jpg'%}" alt="Thumbnail 3" class="thumbnail">  {% endcomment %}
-
+                                        {% else %}
+                                        <div class="foto-thumb">
+                                            <div class="foto-aviso">Produto In Natura</div>
+                                            <img src="../{{f.foto}}" alt="Thumbnail 2" class="thumbnail">
+                                        </div>
+                                        {% endif %}
                                 {% endfor %}
                                                                 <!-- Adicione mais thumbnails aqui -->
                             </div>
@@ -78,6 +83,7 @@
 Sem aroma ou essências artificiais.<br>
 Sem conservantes.<br> -->
 <!-- Sem corantes.<br>  -->
+<br>
                         {{ produto.descricao }}
                     </p><br>
                     <p class="txt-s-101 cl6" style="font-family: 'Open Sans', sans-serif !important">
@@ -89,7 +95,7 @@ Sem conservantes.<br> -->
                             <input class="txt-m-102 cl6 txt-center num-product" type="number" name="num-product" value="1">
                             <div class="btn-num-product-up qtyplus flex-c-m  fs-16" onclick="qtyplus('num-product')" style="padding: 5px 6px; box-sizing: content-box;"><svg xmlns="http://www.w3.org/2000/svg" height="0.8em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="rgb(153, 153, 153)" d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"></path></svg></div>
                         </div>
-                        <button class="flex-c-m txt-s-103 cl0 size-a-2 hov-btn2 trans-04 m-b-30 js-addcart1" style="text-transform:none; letter-spacing:3px;" onclick="addElementInCard(2)">
+                        <button class="flex-c-m txt-s-103 cl0 size-a-2 hov-btn2 trans-04 m-b-30 js-addcart1" style="text-transform:none; letter-spacing:3px;" onclick="addElementInCard('{{produto.id}}','{{produto.nome}}')">
                             Orçar
                         </button>
                     </div>
@@ -136,6 +142,7 @@ Sem conservantes.<br> -->
                 </div>
 
                 <div class="tab-pane fade" id="info" role="tabpanel" aria-expanded="false">
+                    
                     <ul class="p-t-21" style="font-family: 'Open Sans', sans-serif !important">
                             <li class="txt-s-101 flex-w how-bor2 p-tb-14">
                                 <span class="cl6 size-w-54">

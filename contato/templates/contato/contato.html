@@ -49,8 +49,8 @@
                 <div class="heading header-subheader align-center color-black subcolor-main transform-default theme-icon-second icon-type-hidden   vc_custom_1562164638403 heading-tag-h4" id="like_sc_header_1455286753"><h4 data-text="Send message" class="header ltx-sr-id-like_sc_header_1455286753216004979 ltx-sr ltx-sr-effect-fade_in ltx-sr-el-block ltx-sr-delay-0 ltx-sr-duration-1000 ltx-sr-sequences-0" data-sr-id="1" style="visibility: visible;  -webkit-transform: scale(1); opacity: 0;transform: scale(1); opacity: 0;">Send message</h4></div><div class="ltx-contact-form-7 transform-default form-center form-white form-bg-white form-style-default form-btn-default form-btn-default form-padding-none    vc_custom_1570132734939" id="like_sc_contact_form_7_1511860442">
                     <div role="form" class="wpcf7" id="wpcf7-f10794-p25-o2" lang="en-US" dir="ltr" style="background-color:white;">
                         <div class="screen-reader-response"></div>
-                        <div class="d-flex" style="align-items:center;">
-                            <div class="d-none d-md-block col-6" style="border-radius:30px; height:fit-content!important; box-sizing:border-box!important;">
+                        <div class="d-flex" style="align-items:flex-start;">
+                            <div class="d-none d-md-block col-6" style="padding: 0 60px 0 30px; border-radius:30px; height:fit-content!important; box-sizing:border-box!important;">
                                 <img style="width: 100%; border-radius: 30px; height: 70%;" src="{% static 'img/contatonew.jpg'%}" />
 
                             </div>
@@ -89,12 +89,17 @@
                                 <div class="wpb_column vc_column_container vc_col-sm-12">
                                     <div class="vc_column-inner">
                                         <div class="wpb_wrapper">
-                                            <ul class="ltx-block-icon  has-descr  icons-count-4 align-center ltx-icon-color-main ltx-icon-size-default ltx-header-color-default ltx-icon-type-transparent ltx-bg-color-transparent layout-cols4 ltx-icon-top  row centered" id="like_sc_block_icon_559545471">
+                                            <ul class="ltx-block-icon  has-descr contato-itens  icons-count-4 align-center ltx-icon-color-main ltx-icon-size-default ltx-header-color-default ltx-icon-type-transparent ltx-bg-color-transparent layout-cols4 ltx-icon-top  row centered" id="like_sc_block_icon_559545471">
                                                 <li class="col-lg-3 col-md-6 col-sm-6 col-ms-6 col-12 local">
                                                     <a href="https://goo.gl/maps/kyYgjZ43RVjNU81t6" target="_blank">
-                                                        <span class="ltx-icon" style="padding-top:0;">
-                                                            <img src="{% static 'img/icon-address.png'%}" />
-                                                        </span> <h6 class="header" style="color:black;"> Localização </h6><p class="mapClick" style="font-size: 12px; color: #efa907; text-decoration: underline; letter-spacing:2px;">CLIQUE PARA MAPA</p> <div class="descr">
+                                                        <!-- <span class="ltx-icon" style="padding-top:0;"> -->
+                                                            <img src="{% static 'img/marker.svg'%}" />
+                                                        <!-- </span> -->
+                                                         <h6 class="header" style="color:black;"> Localização </h6>
+                                                         <!-- <p class="mapClick" style="font-size: 12px; color: #efa907; text-decoration: underline; letter-spacing:2px;">CLIQUE PARA MAPA</p> -->
+                                                    
+                                                         <div class="descr">
+
                                                         Rua Rosa Pinelli Gomes, 225<br />
                                                         Vila Real Continuação • 13183-091<br />
                                                         13183-091 • Hortolândia / SP
@@ -103,24 +108,26 @@
                                                 </li>
                                                 <li class=" col-lg-3 col-md-6 col-sm-6 col-ms-6 col-12">
                                                     <a style="color:black; text-decoration:none;" href="https://wa.me/+5519974099730">
-                                                        <img src="{% static 'img/icon-phone-03.png'%}" />
+                                                        <img src="{% static 'img/speech.svg'%}" />
                                                         <h6 class="header" style="color: rgb(47 52 69);"> Telefones </h6> <div class="descr">
-                                                            (19) 39009-1511<br />
-                                                            (19) 97409-9730 (whatsapp)
+                                                            <a href="tel:1939091511" target="_blank">(19) 39009-1511</a><br />
+                                                            <a href="https://wa.me/+5519974099730" target="_blank">(19) 97409-9730 (whatsapp)</a>
                                                         </div>
                                                     </a>
                                                 </li>
                                                 <li class=" col-lg-3 col-md-6 col-sm-6 col-ms-6 col-12">
                                                     <a style="color:black; text-decoration:none;" href="mailto:contato@saborpaulista.com">
-                                                        <img src="{% static 'img/icon-mail-03.png'%}" />
+                                                        <img src="{% static 'img/mail.svg'%}" />
                                                         <h6 class="header" style="color: rgb(47 52 69);"> Email </h6> <div class="descr">
-                                                            contato@saborpaulista.com<br />
+                                                            <a href="mailto:contato@saborpaulista.com" target="_blank">contato@saborpaulista.com</a><br />
                                                         </div>
                                                     </a>
                                                 </li>
                                                 <li class=" col-lg-3 col-md-6 col-sm-6 col-ms-6 col-12">
-                                                        <svg style="width:36px; height:36px;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120V256c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2V120c0-13.3-10.7-24-24-24s-24 10.7-24 24z" /></svg>                                                  
-                                                   <h6 class="header" style="color: rgb(47 52 69);"> Horário de Funcionamento </h6> <div class="descr">
+
+                                                    <img src="{% static 'img/clock.svg'%}" />
+                                                   <h6 class="header" style="color: rgb(47 52 69);"> Horário de Funcionamento </h6>
+                                                    <div class="descr">
                                                         Segunda a Sexta<br>
                                                         8:00h - 18:00
                                                     </div>

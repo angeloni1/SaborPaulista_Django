@@ -57,3 +57,19 @@ textarea::placeholder {
 .foodArea{
     border-radius:5px; padding:23px; height:200px; box-sizing:border-box; font-size:15px; background-color:#F7F7F7;
 }
+
+.foodservice-icons {
+    margin-bottom: 10px;
+    max-width: 200px;
+    width: -webkit-fill-available;
+}
+
+.tit-diferencial {
+    font-size: 22px;
+    color: #FFB60D;
+    color: #000000;
+    font-family: 'Open Sans', arial !important;
+    font-weight: 100;
+    line-height: 23px;
+    text-align: center;
+}

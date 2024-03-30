@@ -3,13 +3,13 @@
 
 {% block head %}
 
-<link rel="stylesheet" src="{% static 'trabalheConosco/style.css'%}">
-
+<!-- <link rel="stylesheet" src="{% static 'trabalheConosco/style.css'%}"> -->
+<link rel="stylesheet" href="{% static 'trabalheconosco/style.css' %}"/>
 {% endblock head %}
 
 
 {% block content %}
-<section class="about-area pt-100 pb-140" style="background-color:#F7F7F7;">
+<section class="about-area pt-100" style="background-color:#F7F7F7;">
     
     <div class="col-12" style="display:flex; height:auto;">
         <div class="container">
@@ -30,9 +30,10 @@
 <form method="post" action="" class="form-horizontal" enctype="multipart/form-data">
   <!-- Floating Labels Form -->
                     {% comment %} @*<form class="row g-3">*@ {% endcomment %}
-                        <div class="flex-column flex-lg-row" style="display:flex;">
-                            <div class="col-md-6 mb-4">
+                        <div class="flex-column flex-lg-row" style="display:flex; align-items: flex-end;">
+                            <div class="col-md-6">
                                 <img src="{% static 'img/trabalhe-conosco-aplication-site.jpg'%}" />
+
                                 {% comment %} @*<div class="form-floating col-8" style="padding: 20px; border-radius:5px; border: 1px solid #ced4da; text-align: left;">
                                     <div style="margin-top:-30px; background-color:white; text-align:center; width:70%; margin-left:auto; margin-right:auto;">
                                         <p >
@@ -47,7 +48,7 @@
     
                                 </div>*@ {% endcomment %}
                             </div>
-                            <div>
+                            <div class="m-b-100">
                             <div class="divTitulo col-12 mx-auto text-lg-left text-center mb-30">
                                     <h1 style="font-weight: 300; font-family: 'Open Sans', sans-serif!important; font-size: 60px; color:black;">
                                         Trabalhe Conosco
@@ -68,7 +69,7 @@
                                     <div class="pt-sm-0 pt-5">
                                         <span class="ltx-btn-wrap">
                                             <span class="ltx-btn-wrap">
-                                                <button style="background-color: transparent; letter-spacing: 3px; transition: all 0.1s linear !important; padding: 10px 0px; border: 1px solid #ced4da; border-radius: 50px; height: 50px; font-size: 14px; color: black; font-weight: 400;width:130px" type="submit" value="Enviar" class="wpcf7-form-control wpcf7-submit btn botaoEnviar">Enviar</button>
+                                                <button style=" letter-spacing: 3px; transition: all 0.1s linear !important; padding: 10px 0px; border: 1px solid #ced4da; border-radius: 50px; height: 50px; font-size: 14px; color: black; font-weight: 400;width:130px" type="submit" value="Enviar" class="cadastrarCurriculoBtn">Enviar</button>
                                             </span>
                                         </span><span class="ajax-loader"></span>
                                     </div>

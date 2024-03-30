@@ -8,30 +8,27 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
-
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" href="~/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="~/icons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="~/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="~/icons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="~/icons/android-chrome-512x512.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="~/icons/android-chrome-192x192.png">
+    <link rel="icon" href="{%static 'img/favicon.ico'%}" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="{%static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{%static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static 'img/favicon-16x16.png' %}">
+    <link rel="icon" type="image/png" sizes="512x512" href="{%static 'img/android-chrome-512x512.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{%static 'img/android-chrome-192x192.png' }%">
 
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/favicon.ico">
 
-
     <title>Sabor Paulista - Sua Fábrica e Distribuidora de Pão de Queijo</title>
 
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.0/dist/cookieconsent.css">
     <link rel="stylesheet" href="{% static 'othersCSS/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/style.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/animate.min.css' %}">
-    <link rel="stylesheet" href="{% static 'othersCSS/cookieconsent.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'othersCSS/cookieconsent.min.css' %}"> -->
 
     <link rel="stylesheet" href="{% static 'othersCSS/all.min.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/css.css' %}">
@@ -74,7 +71,7 @@
     <link rel="stylesheet" href="{% static 'othersCSS/icon_fabricacao-style.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/seta.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/text-rotator.css' %}">
-    <link rel="stylesheet" href="{% static 'othersCSS/navbar.less' %}">
+    <link rel="stylesheet" href="{% static 'othersCSS/navbar.css' %}">
     <link rel="stylesheet" href="{% static 'base/style.css' %}">
     <link rel="stylesheet" href="{% static 'products/util.css' %}"/>
 
@@ -130,8 +127,7 @@
 
     <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-  />
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -185,7 +181,7 @@
                           
                                 
 
-                                <a class="navbar-brand mx-auto" style="padding:0; padding-right:15px;" href=""><img style="" src="{% static 'img/logo_menu_interno_sem_box.png'%}" alt="logo"></a>
+                                <a class="navbar-brand mx-auto" style="padding:0; padding-right:15px;" href="{% url 'home' %}"><img style="" src="{% static 'img/logo_menu_interno_sem_box.png'%}" alt="logo"></a>
 
 
                             {% endif %}
@@ -359,7 +355,7 @@
                         {% comment %} @Html.ActionLink("Food Service", "FoodService", "FoodService", null, new { @class = "a-btn a-block footer-link link-padding-top  text-sm-center text-md-left" }) {% endcomment %}
                         <a href="{% url 'documentos' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Documentos</a>
                         {% comment %} @Html.ActionLink("Documentos", "Documentos", "Documentos", null, new { @class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left" }) {% endcomment %}
-                        <a href="{% url 'documentos' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Acervo de Vídeos</a>
+                        <a href="{% url 'videos' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Acervo de Vídeos</a>
                         {% comment %} @Html.ActionLink("Acervo de Vídeos", "Documentos", "Documentos", null, new { @class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left" }) {% endcomment %}
                         <a href="{% url 'representantes' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Representantes</a>
                         {% comment %} @Html.ActionLink("Representantes", "Representantes", "Representante", null, new { @class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left" }) {% endcomment %}
@@ -367,41 +363,7 @@
                         {% comment %} @Html.ActionLink("Contato", "Contato", "Contato", null, new { @class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left" }) {% endcomment %}
                     </p>
                     <div>
-
-                        {% comment %} @*<div class="">
-                                <script>
-                                    document.addEventListener("DOMContentLoaded", function () {
-                                        window.cookieconsent.initialise({
-                                            container: document.getElementById("content"),
-                                            palette: {
-                                                popup: {
-                                                    background: "rgba(12,30,63,0.85) !important",
-
-                                                },
-                                                button: { background: "#008ef2", text: '#FFF' },
-                                            },
-                                            theme: "block",
-                                            position: "bottom",
-                                            content: {
-                                                message: '<div class="col-6">Para melhorar a sua experiência na plataforma e prover serviços personalizados, utilizamos cookies. Ao aceitar, você terá acesso a todas as funcionalidades do site. Se clicar em "Rejeitar Cookies", os cookies que não forem estritamente necessários serão desativados. Para escolher quais quer autorizar, clique em "Gerenciar cookies". Saiba mais em nossa.</div>',
-                                                dismiss: 'Got it!',
-                                                link: 'Declaração de Cookies',
-                                                href: 'https://www.termsfeed.com/blog/sample-cookies-policy-template/',
-                                            },
-                                            revokable: true,
-                                            onStatusChange: function (status) {
-                                                console.log(this.hasConsented() ?
-                                                    'enable cookies' : 'disable cookies');
-                                            },
-                                            law: {
-                                                regionalLaw: false,
-                                            },
-                                            location: true,
-                                        });
-                                    });
-                                </script>
-
-                            </div>*@ {% endcomment %}
+                     
                     </div>
                 </div>
                 <div class="d-flex col-12 col-md-4 flex-wrap align-items-md-start align-items-center p-md-0 p-5" style="flex-direction: column; justify-content: left;">
@@ -439,9 +401,9 @@
 
                 </div>
                 <div class="col-8" style="padding:0;margin-top:50px; color:black; justify-content:space-between; font-size:13px; display:flex; align-items:center;">
-                    <div style="padding-left:15px;">
+                    <div>
                         <p style="font-size:13px; transform:translate(0, -100%);">
-                            ©  {% now "Y" %} - Todos os direitos reservados
+                            ©  2024 - Todos os direitos reservados
                         </p>
 
                         <p style="font-size:13px;">
@@ -496,7 +458,7 @@
     <div id="divBlack" style="z-index:98; opacity:0.4; width:100vw; top:0; height:100vh; position:fixed; display:none; background-color:black;" onclick="openCloseCard()"></div>
     <!-- Cookie notification -->
 
-    <div id="whats" class="whats w-14 h-14 fixed cursor-pointer"><img src="{% static 'img/whatsapp-icone.d36c0bfb.png'%}" class="w-full h-full" onclick="openWP()"></div>
+    <a id="whats" href="https://wa.me/+5519974099730" target="_blank" class="whats w-14 h-14 fixed cursor-pointer"><img src="{% static 'img/whatsapp-icone.d36c0bfb.png'%}" class="w-full h-full" /></a>
 
 
 
@@ -517,31 +479,33 @@
         </div>
     </div>
 
+    <script type="module" src="{% static 'othersJS/cookieconsent-config.js'%}"></script>
+     <!-- <script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script> -->
 
-    {% comment %} <script src="{% static 'othersJS/jquery '%}"/>
+    {% comment %} <script src="{% static 'othersJS/jquery'%}"/>
     <script src="{% static 'othersJS/bootstrap '%}"/> {% endcomment %}
-    <script src="{% static 'othersJS/jquery.min.js '%}"></script>
-    <script src="{% static 'othersJS/bootstrap.bundle.min.js '%}"></script>
-    <script src="{% static 'othersJS/blocs.min.js '%}"></script>
-    <script src="{% static 'othersJS/lazysizes.min.js '%}"></script>
-    <script src="{% static 'othersJS/cookieconsent.min.js '%}"></script>
-    <script src="{% static 'othersJS/scrollFX.js '%}"></script>
+    <script src="{% static 'othersJS/jquery.min.js'%}"></script>
+    <script src="{% static 'othersJS/bootstrap.bundle.min.js'%}"></script>
+    <script src="{% static 'othersJS/blocs.min.js'%}"></script>
+    <script src="{% static 'othersJS/lazysizes.min.js'%}"></script>
+    <script src="{% static 'othersJS/scrollFX.js'%}"></script>
 
 
-    <script src="{% static 'othersJS/meanmenu.js '%}"></script>
-    <script src="{% static 'othersJS/jquery-ui.js '%}"></script>
-    <script src="{% static 'othersJS/ajax-form.js '%}"></script>
-    <script src="{% static 'othersJS/countdown.js '%}"></script>
-    <script src="{% static 'othersJS/imagesloaded-pkgd.js '%}"></script>
-    <script src="{% static 'othersJS/isotope-pkgd.js '%}"></script>
-    <script src="{% static 'othersJS/wow.js '%}"></script>
-    <script src="{% static 'othersJS/counterup.js '%}"></script>
-    <script src="{% static 'othersJS/magnific-popup.js '%}"></script>
-    <script src="{% static 'othersJS/slick.js '%}"></script>
-    <script src="{% static 'othersJS/nice-select.js '%}"></script>
-    <script src="{% static 'othersJS/swiper-bundle.js '%}"></script>
+    <script src="{% static 'othersJS/meanmenu.js'%}"></script>
+    <script src="{% static 'othersJS/jquery-ui.js'%}"></script>
+    <script src="{% static 'othersJS/ajax-form.js'%}"></script>
+    <script src="{% static 'othersJS/countdown.js'%}"></script>
+    <script src="{% static 'othersJS/imagesloaded-pkgd.js'%}"></script>
+    <script src="{% static 'othersJS/isotope-pkgd.js'%}"></script>
+    <script src="{% static 'othersJS/wow.js'%}"></script>
+    <script src="{% static 'othersJS/counterup.js'%}"></script>
+    <script src="{% static 'othersJS/magnific-popup.js'%}"></script>
+    <script src="{% static 'othersJS/slick.js'%}"></script>
+    <script src="{% static 'othersJS/nice-select.js'%}"></script>
+    <script src="{% static 'othersJS/swiper-bundle.js'%}"></script>
     <script src="{% static 'othersJS/waypoints.js' %}"></script>
 
+    {% comment %} 
     <script src="{% static 'othersJS/apexcharts.min.js' %}"></script>
     <script src="{% static 'othersJS/chart.umd.js' %} "></script>
     <script src="{% static 'othersJS/echarts.min.js'%}"></script>
@@ -553,7 +517,6 @@
     <script src="{% static 'othersJS/popup.js'%}"></script>
     <script src="{% static 'othersJS/text-rotator.js'%}"></script>
 
-    {% comment %} 
      {% endcomment %}
 
     {% comment %} @Scripts.Render("~/Content/Home_files/SingleProduct/slide100.js")

@@ -213,6 +213,7 @@
         }
         ///////////animation logo
         $(document).ready(function () {
+
             // Adicione a classe de animação normal ao carregar a página
             $('.logobolado').addClass('logoAnimacao1');
 
@@ -230,6 +231,7 @@
                                                                                             /* <![CDATA[ */ var wwsObj = { "supportNumber": "911234567890", "autoPopup": "1", "plugin_url": "http:\/\/collegare.com.br\/said\/", "is_mobile": "0", "is_product": "0", "current_page_url": "http:\/\/collegare.com.br\/said\/", "current_popup_template": "6", "is_popup_display_on_current_page": "1", "group_invitation_id": "XYZ12345678", "admin_ajax_url": "http:\/\/collegare.com.br\/said\/wp-admin\/admin-ajax.php", "scroll_lenght": null, "auto_popup_time": "10", "is_gdpr": "0" }; /* ]]> */
 
         $(document).ready(function () {
+
             $(".js-example-basic-single").select2();
         });
 
@@ -864,7 +866,7 @@
                 '  </div>' +
                 '  <div class="tpcart__content">' +
                 '<span class="tpcart__content-title">' +
-                '<a href="shop-details.html">' + carrinho[i]['nome'] + '</a>' +
+                    '<a href="/produtos/' + carrinho[i]["id"] + '">' + carrinho[i]['nome'] + '</a>' +
                 '   </span>' +
                 '<a onclick="removeElementCart(' + i + ')" style="font-weight:bold; color:red; font-size:15px; margin-left:25px;">X</a>' +
                 '  <div class="tpcart__cart-price">' +
@@ -974,14 +976,14 @@
             }
         }
 
-        function addElementInCard(id) {
+        function addElementInCard(id, nome) {
             totalItensCarrinho = Number(localStorage.getItem("numberItens"));
 
             document.getElementById("numberItens").style.display = "block";
             document.getElementById("numberItensMobile").style.display = "block";
 
             var quantidade = document.getElementsByClassName("num-product")[0];
-            var nome = document.getElementsByClassName("nomeCar")[0];
+            // var nome = document.getElementsByClassName("nomeCar")[0];
             var categoria = document.getElementsByClassName("categoriaCar")[0];
             var img = document.getElementsByClassName("imgCar")[0];
 
@@ -1003,7 +1005,7 @@
                 '  </div>' +
                 '  <div class="tpcart__content">' +
                 '<span class="tpcart__content-title">' +
-                '<a href="shop-details.html">' + nome.textContent + '</a>' +
+                    '<a href="/produtos/' + id + '">' + nome + '</a>' +
                 '   </span>' +
                 '<a onclick="removeElementCart(' + i + ')" style="font-weight:bold; color:red; font-size:15px; margin-left:25px;">X</a>' +
                 '  <div class="tpcart__cart-price">' +
@@ -1026,10 +1028,11 @@
             }
 
             itensCarrinho.push({
-                nome: nome.text,
+                nome: nome,
                 categoria: categoria.text,
                 img: img.getAttribute("src"),
-                quantidade: quantidade.value
+                quantidade: quantidade.value,
+                id : id
             })
             console.log(totalItensCarrinho, quantidade.value);
 
@@ -1076,7 +1079,7 @@
                     '  </div>' +
                     '  <div class="tpcart__content">' +
                     '<span class="tpcart__content-title">' +
-                    '<a href="shop-details.html">' + removeCarrinho[i]['nome'] + '</a>' +
+                    '<a href="/produtos/' + removeCarrinho[i]["id"] + '">' + removeCarrinho[i]['nome'] + '</a>' +
                     '   </span>' +
                     '<a onclick="removeElementCart(' + i + ')" style="font-weight:bold; color:red; font-size:15px; margin-left:25px;">X</a>' +
                     '  <div class="tpcart__cart-price">' +
@@ -1165,7 +1168,6 @@
 
             if (pilar == 1 && pilar1.clientHeight == 0) {
                 console.log("11111")
-
                 pilar1.style.height = pilar1.scrollHeight + "px";
                 icon1.style.opacity = 0;
                 icon2.style.opacity = 1;
@@ -1208,6 +1210,7 @@
         }
 
         $(document).ready(function () {
+
             $(".js-example-basic-single").select2();
 
             $("#id_telefone").on( "keydown", function() {
