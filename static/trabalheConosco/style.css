@@ -106,7 +106,7 @@ input::-moz-placeholder {
     font-size: 14px;
 }
 .form-control::placeholder {
-    font: 0.8rem/3 sans-serif;
+    font: 0.8rem/3 sans-serif !important;
     padding: 0;
     letter-spacing: 0.5px;
     line-height: inherit;
