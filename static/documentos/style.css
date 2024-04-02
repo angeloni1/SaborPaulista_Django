@@ -48,7 +48,7 @@
 }
 
 .close-button {
-    cursor: pointer;
+       cursor: pointer;
     color: black;
     background-color: transparent;
     border: 1px solid #FFB60D;
@@ -61,18 +61,21 @@
     display: inline-block;
     letter-spacing: 1px;
     transition: all 0.1s linear;
+    padding: 2px 10px;
+    width: 90px;
+    text-align: left;
 }
 
     .close-button::after {
-        content: 'X';
-        padding: 13px 10px;
-        display: inline-block;
-        background-color: #FFB60D !important;
-        border-radius: 70px;
-        position: absolute;
-        top: 40%;
-        right: 0;
-        color: white;
+      content: 'X';
+    padding: 2px 9px;
+    display: inline-block;
+    background-color: #FFB60D !important;
+    border-radius: 70px;
+    position: absolute;
+    top: 38%;
+    right: 0;
+    color: white;
     }
 
     .close-button:hover {

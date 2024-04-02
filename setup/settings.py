@@ -158,6 +158,9 @@ STATICFILES_DIRS = [
 ]
 
 # Base url to serve media files
+# MEDIA_URL = '/'
+# # Path where media is storedA
+# MEDIA_ROOT = os.path.join(BASE_DIR, '/')
 MEDIA_URL = '/'
 # Path where media is storedA
 MEDIA_ROOT = os.path.join(BASE_DIR, '/')

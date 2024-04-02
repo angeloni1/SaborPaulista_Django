@@ -549,3 +549,7 @@ select {
 .fix-textarea {
     height: 150px !important;
 }
+
+.menu-active {
+    background-color: #ffc84a;
+}

@@ -1,5 +1,8 @@
 import 'https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.0/dist/cookieconsent.umd.js';
 
+
+document.documentElement.classList.add('cc--light-funky');
+
 CookieConsent.run({
     guiOptions: {
         consentModal: {
@@ -27,38 +30,34 @@ CookieConsent.run({
         translations: {
             en: {
                 consentModal: {
-                    title: "Hello traveller, it's cookie time!",
-                    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-                    acceptAllBtn: "Accept all",
-                    acceptNecessaryBtn: "Reject all",
-                    showPreferencesBtn: "Manage preferences",
-                    footer: "<a href=\"#link\">Privacy Policy</a>\n<a href=\"#link\">Terms and conditions</a>"
+                    title: "Definições de Cookies",
+                    description: "Este site utiliza cookies para melhorar sua experiência de navegação. Ao continuar, você concorda com o uso de cookies.",
+                    acceptAllBtn: "Aceitar Todos",
+                    acceptNecessaryBtn: "Rejeitar Todos",
+                    showPreferencesBtn: "Gerenciar",
+                    // footer: "<a href=\"#link\">Privacy Policy</a>\n<a href=\"#link\">Terms and conditions</a>"
                 },
                 preferencesModal: {
-                    title: "Consent Preferences Center",
-                    acceptAllBtn: "Accept all",
-                    acceptNecessaryBtn: "Reject all",
-                    savePreferencesBtn: "Save preferences",
-                    closeIconLabel: "Close modal",
+                    title: "Configurações de Privacidade",
+                    acceptAllBtn: "Aceitar Todos",
+                    acceptNecessaryBtn: "Rejeitar Todos",
+                    savePreferencesBtn: "Salvar",
+                    closeIconLabel: "Fechar",
                     serviceCounterLabel: "Service|Services",
                     sections: [
                         {
-                            title: "Cookie Usage",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                            title: "Uso dos cookies",
+                            description: "Os cookies são pequenos arquivos que ajudam o site a lembrar suas preferências e oferecer uma experiência personalizada."
                         },
                         {
-                            title: "Strictly Necessary Cookies <span class=\"pm__badge\">Always Enabled</span>",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            title: "Cookies Obrigatórios <span class=\"pm__badge\">Sempre Habilitado</span>",
+                            description: "Necessários para autenticação, segurança e gerenciamento de sessões, incluindo o uso do reCAPTCHA. Ao contrário dos cookies de terceiros, não exigem consentimento do usuário, pois são indispensáveis para fornecer os serviços online.",
                             linkedCategory: "necessary"
                         },
                         {
-                            title: "Functionality Cookies",
-                            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                            title: "Cookies de Funcionalidades",
+                            description: "Cookies de terceiros, como o Google Analytics, monitoram o comportamento do usuário em um site, coletando dados como páginas visitadas e tempo de permanência. Fornecidos por empresas de análise, esses cookies visam melhorar a experiência do usuário e oferecer insights sobre o desempenho do site.",
                             linkedCategory: "functionality"
-                        },
-                        {
-                            title: "More information",
-                            description: "For any query in relation to my policy on cookies and your choices, please <a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."
                         }
                     ]
                 }

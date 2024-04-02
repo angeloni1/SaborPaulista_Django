@@ -448,7 +448,7 @@
                     logo[0].style.opacity = "0";
                     logo[0].style.display = "none";
                     document.getElementById("iconLadoHome").style.display = "block";
-                    document.getElementsByClassName("navbartopo")[0].style.height = "70px";
+                    document.getElementsByClassName("navbartopo")[0].style.height = "90px";
                     document.getElementsByClassName("navFlex")[0].style.justifyContent = "space-around";
                     document.getElementsByClassName("navFlex")[0].classList.remove("col-11");
                     document.getElementsByClassName("navFlex")[0].classList.add("col-12");
@@ -466,7 +466,7 @@
                     document.getElementsByClassName("navFlex")[0].classList.remove("col-12");
                     document.getElementsByClassName("navFlex")[0].classList.add("col-11");
                     if (subMenu != null) {
-                        subMenu.style.top = "70px";
+                        subMenu.style.top = "90px";
                     }
 
 

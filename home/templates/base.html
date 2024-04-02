@@ -23,7 +23,11 @@
 
     <title>Sabor Paulista - Sua Fábrica e Distribuidora de Pão de Queijo</title>
 
+    <meta property="og:title" content="Sabor Paulista - Sua Fábrica e Distribuidora de Pão de Queijo" />
+    <meta property="og:image" content="{%static 'img/logotipo_img_capa.png' %}" />
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.0.0/dist/cookieconsent.css">
+    <link rel="stylesheet" href="{% static 'othersCSS/cookies.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/style.css' %}">
     <link rel="stylesheet" href="{% static 'othersCSS/animate.min.css' %}">
@@ -165,7 +169,7 @@
         <div class="container bloc-sm navbartopo" style="box-shadow: rgb(0 0 0 / 20%) 0px 0px 5px; position: fixed; padding: 5px 0px; z-index: 999; width: 100vw; max-width: 100vw; background-color: white; height: inherit; ">
             <div class="row" style="padding-bottom:0; height:100%;">
                 <div class="col-12 container mx-auto navFlex" style="display: flex; justify-content: center; align-items: center; width: 100%; max-width:1300px;">
-                    {% if request.path == "/" %}
+                    {% if request.path == "/saborpaulista/" %}
                     
                         <a class="navbar-brand logobolado" href="{% url 'home' %}" style="top:-20px; position:relative!important;"><img src="{% static 'img/logotipo_home_principal.png'%}" alt="logo"></a>
 
@@ -176,12 +180,9 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>*@ {% endcomment %}
                         <div class="collapse navbar-collapse navbar-41605 d-flex pl-0" style="width: 100%;">
-                            {% if request.path != "/" %}
+                            {% if request.path != "/saborpaulista/" %}
                           
-                                
-
                                 <a class="navbar-brand mx-auto" style="padding:0; padding-right:15px;" href="{% url 'home' %}"><img style="" src="{% static 'img/logo_menu_interno_sem_box.png'%}" alt="logo"></a>
-
 
                             {% endif %}
                             <div class="navbar-brand mx-auto" id="iconLadoHome" style="padding:0; padding-right:15px; display:none; height:47px; margin-top:">
@@ -193,15 +194,15 @@
                             <ul class="site-navigation nav navbar-nav mx-auto justify-content-center menu">
 
                                 <li class="nav-item menu-item px-0">
-                                    <a class="nav-link a-btn px-3" href="{% url 'home' %}">Home</a>
+                                    <a class="nav-link a-btn px-3 {%if request.path == '/saborpaulista/'%} menu-active {%endif %} " href="{% url 'home' %}">Home</a>
                                     {% comment %} @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
                                 </li>
                                 <li class="nav-item menu-item px-0" id="sobreNosLi">
-                                    <a class="nav-link a-btn px-3" onclick="travaSubMenu(this)">Sobre Nós</a>
+                                    <a class="nav-link a-btn px-3 {%if 'trabalheConosco' in request.path %} menu-active {%endif %}" onclick="travaSubMenu(this)">Sobre Nós</a>
                                     <div class="subMenu">
                                         <ul>
                                             <li class="nav-item menu-item px-0">
-                                                <a class="nav-link nav-link-sub a-btn px-4" href="{% url 'sobreNos' %}">Sobre-Nos</a>
+                                                <a class="nav-link nav-link-sub a-btn px-4" href="{% url 'sobreNos' %}">Sobre-Nós</a>
                                                 {% comment %} @Html.ActionLink("A empresa", "Sobre-Nos", "Sobrenos", null, new { @class = "nav-link nav-link-sub a-btn px-4" }) {% endcomment %}
 
                                             </li>
@@ -215,23 +216,23 @@
                                 </li>
 
                                 <li class="nav-item menu-item px-0">
-                                    <a class="nav-link a-btn px-3" href="{% url 'products' %}">Produtos</a>
+                                    <a class="nav-link a-btn px-3 {%if 'produtos' in request.path %} menu-active {%endif %}" href="{% url 'products' %}">Produtos</a>
                                     {% comment %} @Html.ActionLink("Produtos", "Produtos", "Produtos", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
                                 </li>
                                 <li class="nav-item menu-item px-0">
-                                    <a class="nav-link a-btn px-3" href="{% url 'foodService' %}">FoodService</a>
+                                    <a class="nav-link a-btn px-3 {%if 'foodService' in request.path %} menu-active {%endif %}" href="{% url 'foodService' %}">FoodService</a>
                                     {% comment %} @Html.ActionLink("Food Service", "FoodService", "FoodService", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
                                 </li>
                                 <li class="nav-item menu-item px-0">
-                                    <a class="nav-link a-btn px-3" href="{% url 'representantes' %}">Representantes</a>
+                                    <a class="nav-link a-btn px-3 {%if 'representantes' in request.path %} menu-active {%endif %}" href="{% url 'representantes' %}">Representantes</a>
                                     {% comment %} @Html.ActionLink("Representantes", "Representantes", "Representante", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
                                 </li>
                                 <li class="nav-item menu-item px-0">
-                                    <a class="nav-link a-btn px-3" href="{% url 'documentos' %}">Documentos</a>
+                                    <a class="nav-link a-btn px-3 {%if 'documentos' in request.path %} menu-active {%endif %}" href="{% url 'documentos' %}">Documentos</a>
                                     {% comment %} @Html.ActionLink("Documentos", "Documentos", "Documentos", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
                                 </li>
                                 <li class="nav-item menu-item px-0">
-                                    <a class="nav-link a-btn px-3" href="{% url 'contato' %}">Contate-nos</a>
+                                    <a class="nav-link a-btn px-3 {%if 'contato' in request.path %} menu-active {%endif %}" href="{% url 'contato' %}">Contate-nos</a>
                                     {% comment %} @Html.ActionLink("Contate-nos", "Contato", "Contato", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
                                 </li>
 
@@ -283,7 +284,7 @@
                         <a class="nav-link a-btn px-4" >Sobre Nós</a>
                         <ul class="subMenu">
                             <li class="nav-link menu-item px-0">
-                                <a class="nav-link a-btn px-4" href="{% url 'sobreNos' %}">Sobre-nos</a>
+                                <a class="nav-link a-btn px-4" href="{% url 'sobreNos' %}">Sobre-nós</a>
                                 {% comment %} @Html.ActionLink("A empresa", "Sobre-Nos", "Sobrenos", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
 
                             </li>
@@ -342,7 +343,7 @@
                     <p class="p-bloc-8-style endereco" id="linksFooter" style="color: #7a5941!important;">
                         <a href="{% url 'home' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Home</a>
                         {% comment %} @Html.ActionLink("Home", "Index", "Home", null, new { @class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left" }) {% endcomment %}
-                        <a href="{% url 'sobreNos' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Sobre-nos</a>
+                        <a href="{% url 'sobreNos' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Sobre-nós</a>
                         {% comment %} @Html.ActionLink("A Empresa", "Sobre-nos", "Sobrenos", null, new { @class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left" }) {% endcomment %}
                         <a href="{% url 'trabalheConosco' %}" class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left">Trabalhe Conosco</a>
                         {% comment %} @Html.ActionLink("Trabalhe Conosco", "TrabalheConosco", "TrabalheConosco", null, new { @class = "a-btn a-block footer-link link-padding-top text-sm-center text-md-left" }) {% endcomment %}
