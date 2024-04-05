@@ -92,22 +92,30 @@
             }
         });
     }
+
     function filtro(filtroParametro) {
         console.log(filtroParametro);
+        // console.log(window.location.pathname);
+
+        var addPathName = "";
+
+        if (window.location.pathname.indexOf('saborpaulista') != -1) {
+            addPathName = "/saborpaulista";
+        }
 
         $.ajax({
             type: "GET",
-            url: "/api/representantes/?search="+filtroParametro,
+            url: addPathName + "/api/representantes/?search="+filtroParametro,
             dataType: "json",
             success: function (data) {
                 console.log(data[0])
                 var newDocument = "";
+                newDocument = `<div class="d-flex flex-wrap -mx-4">`
+
                 for (var i = 0; i <= data.length - 1; i++) {
-                    newDocument =
+                    newDocument +=
                     `
-                        <div class="d-flex flex-wrap -mx-4">
-                        <a href="${data[i].enderecomaps}" target="_blank">
-                        <div class="col-4">
+                        <div class="col-12 col-md-6 col-lg-4 ">
                         <div class="col-12 px-4 manu" data-eva="${data[i].nome}">
                         <div id="documentoContainer" class="h-full p-4 text-center rounded-md hover:shadow-xl transition duration-200">
                         <div class="inline-flex h-16 mb-6 items-center justify-center text-white bg-vermelho rounded-lg" style="background-color: rgba(255, 182, 13, 0.75) !important; height:60px; margin:auto auto; box-sizing:border-box; padding:15px; width:60px;">
@@ -119,15 +127,16 @@
                         ${data[i].cel != null ? `<p>${data[i].cel}</p>` : ``}
 
                       
-                        <br/><p> ${data[i].email}</p><br/>
+                        <br/><p><a href="mailto:${data[i].email}" target="_blank" class="representante-hl"> ${data[i].email}</a></p><br/>
+                        <a href="${data[i].enderecomaps}" target="_blank" class="representante-hl">
                         <p> ${data[i].endereco} • ${data[i].cep} • ${data[i].cidade} / ${data[i].estado} </p>
+                        </a>
                         </div>
                         </div>
                         </div> 
-                        </a>
-                        </div>
                         `
                 }
+                newDocument += `</div>`;
                 $("#documentosContainer").html(newDocument);
 
             },

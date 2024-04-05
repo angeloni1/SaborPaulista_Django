@@ -78,7 +78,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('api/', include(router.urls)),
     path('produtos/', include('products.urls')),
-    path('trabalheConosco/', include('trabalheConosco.urls')),
+    path('', include('trabalheConosco.urls')),
     path('representantes/', include('representantes.urls')),
     path('foodService/', include('foodService.urls')),
     path('documentos/', include('documentos.urls')),

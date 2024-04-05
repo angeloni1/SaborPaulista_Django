@@ -35,7 +35,7 @@ CookieConsent.run({
                     acceptAllBtn: "Aceitar Todos",
                     acceptNecessaryBtn: "Rejeitar Todos",
                     showPreferencesBtn: "Gerenciar",
-                    // footer: "<a href=\"#link\">Privacy Policy</a>\n<a href=\"#link\">Terms and conditions</a>"
+                    footer: "<a href=\"http://collegarepropaganda.com/static/img/politica-privacidade.pdf\" target=\"_blank\">Política de Privacidade</a>\n<a href=\"http://collegarepropaganda.com/static/img/termos-de-uso.pdf\" target=\"_blank\">Termos de Uso</a>"
                 },
                 preferencesModal: {
                     title: "Configurações de Privacidade",

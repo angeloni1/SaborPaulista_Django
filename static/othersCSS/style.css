@@ -596,6 +596,12 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	border-style:_popUpItemAction;
 	top:-5px;
 }
+
+.linkwhats:hover {
+	color: #FBBE00 !important;
+
+}
+
 .caption-area{
 	margin-bottom:80px;
 }
@@ -830,7 +836,8 @@ h1,h2,h3,h4,h5,h6,p,label,.btn,a{
 	color:#555555!important;
 }
 .ltc-davys-grey:hover{
-	color:#444444!important;
+	/* color:#444444!important; */
+	color: #FBBE00 !important;
 }
 
 /* Icon colour styles */
