@@ -225,3 +225,10 @@
     width: 100% !important;
 }
 }
+
+.link-download img {
+    transition: all linear 0.3s;
+}
+.link-download:hover img {
+    opacity: 0.5;
+}

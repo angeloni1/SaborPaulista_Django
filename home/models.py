@@ -56,10 +56,14 @@ class Documents(models.Model):
     # id = models.AutoField(db_column='Id', primary_key=True, blank=True, null=True)  # Field name made lowercase.
     titulo = models.CharField(db_column='Titulo', max_length=50, blank=True, null=True)  # Field name made lowercase.
     # arquivo = models.TextField(db_column='Arquivo')  # Field name made lowercase.
-    arquivo = models.FileField(upload_to='anexos/')
-    subtitulo = models.CharField(db_column='SubTitulo', blank=True, null=True, max_length=100)  # Field name made lowercase.
+    # arquivo = models.FileField(upload_to='anexos/')
+    descritivo = models.CharField(db_column='SubTitulo', blank=True, null=True, max_length=100)  # Field name made lowercase.
     categoriaid = models.ForeignKey(Categoriasdocumentos, models.DO_NOTHING, db_column='CategoriaId', blank=True, null=True)  # Field name made lowercase.
     miniatura = models.ImageField(upload_to='images/', null=True)
+    arquivo_zip = models.FileField(upload_to='anexos/', blank=True, verbose_name='Zip')
+    arquivo_pdf = models.FileField(upload_to='anexos/', blank=True, verbose_name='PDF')
+    arquivo_word = models.FileField(upload_to='anexos/', blank=True, verbose_name='Word')
+    arquivo_img = models.FileField(upload_to='anexos/', blank=True, verbose_name='Imagem')
 
     class Meta:
         db_table = 'Documents'
