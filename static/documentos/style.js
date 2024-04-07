@@ -271,11 +271,11 @@ function retornaLinkDownload(arquivo, tipo) {
         return ""
 
     if (tipo == 'pdf') {
-        return `<a href="${arquivo.replace(domain, currentPath)}" target="_blank" class="link-download"><img src="../static/img/icon-pdf.svg" alt="IMG" style="width: 50px;"></a>`
+        return `<a href="${arquivo.replace(domain, currentPath)}" target="_blank" class="link-download"><img src="../../static/img/icon-pdf.svg" alt="IMG" style="width: 50px;"></a>`
     }
 
     if (tipo == 'zip') {
-        return `<a href="${arquivo.replace(domain, currentPath)}" target="_blank" class="link-download"><img src="../static/img/icon-zip.svg" alt="IMG" style="width: 50px;"></a>`
+        return `<a href="${arquivo.replace(domain, currentPath)}" target="_blank" class="link-download"><img src="../../static/img/icon-zip.svg" alt="IMG" style="width: 50px;"></a>`
     }
 
     return "";
