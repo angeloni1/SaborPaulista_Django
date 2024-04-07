@@ -1,11 +1,17 @@
+var currentPath = "";
+var domain = "";
+
 function filtro(filtroParametro) {
+    debugger;
+    domain = window.location.host;
     console.log("aqui");
     var addPathName = "";
-    var currentPath = "";
-    var domain = window.location.host;
     if (window.location.pathname.indexOf('saborpaulista') != -1) {
         addPathName = "/saborpaulista";
         currentPath = domain + "/saborpaulista";
+    }
+    else {
+        currentPath = domain;
     }
 
     $.ajax({
@@ -15,11 +21,10 @@ function filtro(filtroParametro) {
         success: function (data) {
             console.log(data);
             var newDocument = "";
+            newDocument += `<div class="d-flex flex-wrap -mx-4" id="isotope_container">`
             for (var i = 0; i <= data.length - 1; i++) {
-
-
-                newDocument = `
-                    <div class="isotope_selector categoria_${data[i].categoriaid}" style = "padding: 30px 15px; display:flex; align-items:center; width:50%;">
+                newDocument += `
+                    <div class="isotope_selector categoria_${data[i].categoriaid}" >
                     <div class="" style="height:fit-content">
                     <div class="inline-flex h-16 mb-6 items-center justify-center text-white bg-vermelho rounded-lg imgMiniatura" style="background-color: white !important; height:200px; display:flex; justify-content:center; align-items:center; margin:auto auto; box-sizing:border-box; width:150px;">
                     ${data[i].miniatura != null ?
@@ -30,34 +35,58 @@ function filtro(filtroParametro) {
 
                     </div>
                     </div>
-                    <div class="" style="width:60%;">
+                    <div class="" style="width:100%;">
 
-                    <a href="${data[i].arquivo.replace(domain, currentPath)}" class="linkArquivo" target="_blank">
                     <div class="manu" style="padding-top:0;" data-eva="${data[i].titulo}">
                     <div id="documentoContainer" class="h-full px-4 pt-0 text-left rounded-md hover:shadow-xl transition duration-200">
 
 
-                    <h3 class="mb-4 mt-4" style="font-weight:bold; font-size:22px; color:black;">${data[i].titulo}</h3><p style="font-size:14px;">${data[i].subtitulo}</p>
+                    <a href="${data[i].id}" class="linkArquivo">
+                        <h3 class="mb-4 mt-4" style="font-weight:bold; font-size:22px; color:black;">${data[i].titulo}</h3><p style="font-size:14px;">${data[i].descritivo}</p>
+                    </a>
                     </div>
 
                     </div>
-                    </a>
-                    <div style="display:flex; align-items:center; margin-top:20px;" class="px-4 download-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" /></svg>
-                    <a style="width:fit-content; margin-left:5px; height:fit-content; display:block; font-size:13px; " href="${data[i].arquivo.replace(domain, currentPath)}" download class="">FAZER DOWNLOAD</a>
+                    <div class="px-4 mt-10">
+                        <span style="font-size: 12px; display: block;">Fazer download</span>
+                        ${retornaLinkDownload(data[i].arquivo_pdf, 'pdf')}
+                        ${retornaLinkDownload(data[i].arquivo_zip, 'zip')}
                     </div>
                     </div>
                     </div>
                      `
 
-
             }
+
+            newDocument += `</div>`
             $("#documentosContainer").html(newDocument);
+
+            var $container = $('#isotope_container');
+            // $container.isotope('destroy');
+            // initialize isotope
+            $container.isotope({
+                // options...
+                animationEngine: 'best-available',
+                itemSelector: '.isotope_selector'
+            });
+
+            // filter items when filter link is clicked
+            $('#isotope_filters a').on('click', function () {
+                $('#isotope_filters a').removeClass('active');
+                $(this).addClass('active');
+                var selector = $(this).data('filter');
+
+                console.log(selector);
+                $container.isotope({
+                    filter: selector
+                });
+
+            });
 
             lightBoxActivate();
         },
         error: function () {
-            alert("json not found aaaa");
+            console.log("json not found aaaa");
         }
     });
 }
@@ -236,3 +265,19 @@ function filtro(filtroParametro) {
                     }
                  
     
+function retornaLinkDownload(arquivo, tipo) {
+    debugger;
+    if (arquivo == undefined)
+        return ""
+
+    if (tipo == 'pdf') {
+        return `<a href="${arquivo.replace(domain, currentPath)}" target="_blank" class="link-download"><img src="../static/img/icon-pdf.svg" alt="IMG" style="width: 50px;"></a>`
+    }
+
+    if (tipo == 'zip') {
+        return `<a href="${arquivo.replace(domain, currentPath)}" target="_blank" class="link-download"><img src="../static/img/icon-zip.svg" alt="IMG" style="width: 50px;"></a>`
+    }
+
+    return "";
+
+}

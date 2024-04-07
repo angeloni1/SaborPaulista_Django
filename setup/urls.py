@@ -37,7 +37,7 @@ class DocumentsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Documents.objects.all()
     serializer_class = DocumentsSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['titulo', 'subtitulo']
+    search_fields = ['titulo', 'descritivo']
 
 
 

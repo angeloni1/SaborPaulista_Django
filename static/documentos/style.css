@@ -218,6 +218,7 @@
     padding: 30px 15px;
     align-items: center;
     width: 50%;
+    align-items: flex-start;
 }
 
 @media(max-width:768px){
@@ -231,4 +232,16 @@
 }
 .link-download:hover img {
     opacity: 0.5;
+}
+
+.linkArquivo:hover > h3 {
+    color: #FFB60D !important;
+}
+
+/* #documentoContainer > h3 {
+    color: #FFB60D !important;
+} */
+
+.linkVoltar:hover h4, .linkVoltar:hover span {
+    color: #FFB60D !important;
 }

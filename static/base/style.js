@@ -884,7 +884,7 @@
         $(window).on('load', function () {
             // cache container
             var $container = $('#isotope_container');
-
+            $container.isotope('destroy');
             // initialize isotope
             $container.isotope({
                 // options...

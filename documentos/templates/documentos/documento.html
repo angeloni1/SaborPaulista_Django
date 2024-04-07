@@ -11,7 +11,14 @@
 
     <section class="" style="background-color:#F7F7F7; padding-bottom:80px; padding-top:100px;">
         <div class="container px-8 md:px-24 mx-auto">
-            <div class="size-a-1 flex-col-c-m p-b-20">
+        <div style="margin-bottom:40px; margin-left:40px; width:fit-content; cursor:pointer;" class="arrow-back">
+            <a href="../documentos/" style="display: flex; align-items: center; " class="linkVoltar">
+
+                <span class="seta-" style="font-weight: 500; color: black; font-size: 20px; margin-right:15px;"></span>
+                <h4 style="font-weight:400; color:black; font-size:12px; letter-spacing:3px;">VOLTAR DOCUMENTOS</h4>
+            </a>
+        </div>
+            <!-- <div class="size-a-1 flex-col-c-m p-b-20">
                 <div class="txt-center txt-m-201 cl10 how-pos1-parent m-b-14">
                     Sabor Paulista
                     <div class="how-pos1" style="width:90px;">
@@ -20,7 +27,7 @@
                 </div>
                 <h3 class="txt-center txt-l-101 cl3 respon1" style="text-transform:none;">
                 </h3>
-            </div>
+            </div> -->
     
             <!-- <div style="display:flex; flex-direction:column; align-items:center; flex-wrap:wrap; text-align:left; width:100%; margin-bottom:12px;">
                 <div class="search col-8 col-md-4" style=" display:flex;">
@@ -79,6 +86,9 @@
 
                                     {% if doc.arquivo_pdf %}
                                     <a href="../{{doc.arquivo_pdf}}" target="_blank" class="link-download"><img src="{% static 'img/icon-pdf.svg'%}" alt="IMG" style="width: 50px;"></a>
+                                    {% endif %}
+                                    {% if doc.arquivo_zip %}
+                                    <a href="../{{doc.arquivo_zip}}" target="_blank" class="link-download"><img src="{% static 'img/icon-zip.svg'%}" alt="IMG" style="width: 50px;"></a>
                                     {% endif %}
                                 </div>
                             </div>
