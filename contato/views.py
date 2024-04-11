@@ -18,7 +18,7 @@ class ContatoView(View):
 
             TIPO_CONTATO = (('', 'Tipo de Contato'), ('Consumidor', 'Consumidor'),('Empresa', 'Empresa'),('Fornecedor', 'Fornecedor'),)
 
-            subject = "Contato Sabor Paulista" 
+            subject = "Contato Sabor Paulista - Contato" 
             full_message = f"""
             Nome: {form.cleaned_data['nome']} \n
             E-mail: {form.cleaned_data['email']} \n

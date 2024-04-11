@@ -21,7 +21,7 @@ class RepresentantesView(View):
         validado = False
         if form.is_valid():
             validado = True
-            subject = "Contato Representante" 
+            subject = "Contato Sabor Paulista - Representantes" 
             full_message = f"""
             Nome: {form.cleaned_data['nome']} \n
             E-mail: {form.cleaned_data['email']} \n

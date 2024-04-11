@@ -1,4 +1,5 @@
         
+        var formTrabalhe = false;
         // Substitua "YOUTUBE_VIDEO_ID" pelo ID do vídeo do YouTube desejado
 
         // Função para obter a thumbnail e atualizar a imagem
@@ -855,6 +856,12 @@
             numeroItensMobile.innerHTML = '<p style="color:white;">' + localStorage.getItem("numberItens") + '</p>';
         }
 
+        var sbpPath = "";
+        if (window.location.pathname.indexOf('saborpaulista') != -1) {
+            sbpPath = "/saborpaulista";
+        }
+
+
         for (var i = 0; i <= carrinho.length - 1; i++) {
             novoProdutoCarrinho += '   <li id="produto' + i + '">' +
                 '<div class="tpcart__item">' +
@@ -866,7 +873,7 @@
                 '  </div>' +
                 '  <div class="tpcart__content">' +
                 '<span class="tpcart__content-title">' +
-                    '<a href="/produtos/' + carrinho[i]["id"] + '">' + carrinho[i]['nome'] + '</a>' +
+                    '<a href="' + sbpPath + '/produtos/' + carrinho[i]["id"] + '">' + carrinho[i]['nome'] + '</a>' +
                 '   </span>' +
                 '<a onclick="removeElementCart(' + i + ')" style="font-weight:bold; color:red; font-size:15px; margin-left:25px;">X</a>' +
                 '  <div class="tpcart__cart-price">' +
@@ -1271,36 +1278,339 @@
             });
 
         $("form").submit(function() {
-            if (window.File && window.FileReader && window.FileList && window.Blob) {
-                var file = $('#id_curriculo')[0].files[0];
+            if (formTrabalhe) {
+                if (window.File && window.FileReader && window.FileList && window.Blob) {
+                    var file = $('#id_curriculo')[0].files[0];
 
-                if (file && file.size > 2 * 1024 * 1024) {
-                    // alert("File " + file.name + " of type " + file.type + " is too big");
-                    Swal.fire(
-                    'Aviso',
-                    'O tamanho do arquivo é superior ao máximo permitido que é de 2Mb',
-                    'error',
-                  )
-                return false;
+                    if (file && file.size > 2 * 1024 * 1024) {
+                        // alert("File " + file.name + " of type " + file.type + " is too big");
+                        Swal.fire(
+                        'Aviso',
+                        'O tamanho do arquivo é superior ao máximo permitido que é de 2Mb',
+                        'error',
+                    )
+                    return false;
+                    }
                 }
-            }
 
-            var extension = $('#id_curriculo').val().split('.').pop().toLowerCase();
-            var validExtensions = ["pdf","doc","docx"]
-            if (validExtensions.includes(extension)){
+                var extension = $('#id_curriculo').val().split('.').pop().toLowerCase();
+                var validExtensions = ["pdf","doc","docx"]
+                if (validExtensions.includes(extension)){
 
-            }
-            else{
-                  Swal.fire(
-                    'Aviso',
-                    'Apenas arquivos PDF ou Word são permitidos',
-                    'error',
-                  )
-                return false;
+                }
+                else{
+                    Swal.fire(
+                        'Aviso',
+                        'Apenas arquivos PDF ou Word são permitidos',
+                        'error',
+                    )
+                    return false;
+                }
             }
 
             });
         });
      
+function validarFormTrabalhe() {
+    var hasError = false;
 
+    console.log("validar");
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
 
+    if ($("#id_nome").val() == '') {
+        $("#id_nome").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_nome").removeClass('input-error');
+    }
+
+    if ($("#id_telefone").val() == '') {
+        $("#id_telefone").addClass('input-error');
+
+        hasError = true;
+    }
+    else {
+        if ($("#id_telefone").val().length < 14) {
+            $("#id_telefone").addClass('input-error');
+            $("#id_telefone").focus();
+
+            hasError = true;
+            Swal.fire("Aviso", "Insira um número com DDD", "warning");
+            return false;
+        }
+        else {
+            $("#id_telefone").removeClass('input-error');
+        }
+    }
+
+     if ($("#id_email").val() != '') {
+        if (pattern.test($("#id_email").val()) === false) {
+            $("#id_email").addClass('input-error');
+            $("#id_email").focus();
+            hasError = true;
+            Swal.fire("Aviso", "Endereço de e-mail inválido!", "warning");
+            return false;
+        }
+        else {
+            $("#id_email").removeClass('input-error');
+        }
+    }
+    else {
+        $("#id_email").addClass('input-error');
+        // $("#id_email").focus();
+        hasError = true;
+        // Swal.fire("Aviso", "Insira um e-mail válido!", "warning");
+        // return false;
+    }
+
+    if ($("#id_mensagem").val() == '') {
+        $("#id_mensagem").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_mensagem").removeClass('input-error');
+    }
+
+    if (hasError) {
+        return false;
+    }
+    else {
+        formTrabalhe = true;
+        $("#botao-send").css({'display' : 'none'});
+        $("#loader-send").css({'display' : 'block'});
+        $("form").submit();
+    }
+}
+
+function validarFormFS() {
+    var hasError = false;
+
+    console.log("validar");
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+
+    if ($("#id_nome").val() == '') {
+        $("#id_nome").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_nome").removeClass('input-error');
+    }
+
+    if ($("#id_telefone").val() == '') {
+        $("#id_telefone").addClass('input-error');
+
+        hasError = true;
+    }
+    else {
+        if ($("#id_telefone").val().length < 14) {
+            $("#id_telefone").addClass('input-error');
+            $("#id_telefone").focus();
+
+            hasError = true;
+            Swal.fire("Aviso", "Insira um número com DDD", "warning");
+            return false;
+        }
+        else {
+            $("#id_telefone").removeClass('input-error');
+        }
+    }
+
+     if ($("#id_email").val() != '') {
+        if (pattern.test($("#id_email").val()) === false) {
+            $("#id_email").addClass('input-error');
+            $("#id_email").focus();
+            hasError = true;
+            Swal.fire("Aviso", "Endereço de e-mail inválido!", "warning");
+            return false;
+        }
+        else {
+            $("#id_email").removeClass('input-error');
+        }
+    }
+    else {
+        $("#id_email").addClass('input-error');
+        // $("#id_email").focus();
+        hasError = true;
+        // Swal.fire("Aviso", "Insira um e-mail válido!", "warning");
+        // return false;
+    }
+
+    if ($("#id_mensagem").val() == '') {
+        $("#id_mensagem").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_mensagem").removeClass('input-error');
+    }
+
+    if ($("#id_tipo").val() == '') {
+        $("#id_tipo").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_tipo").removeClass('input-error');
+    }
+
+    if (hasError) {
+        return false;
+    }
+    else {
+        formTrabalhe = false;
+        $("#botao-send").css({'display' : 'none'});
+        $("#loader-send").css({'display' : 'block'});
+        $("form").submit();
+    }
+}
+
+function validarFormRepresentantes() {
+    var hasError = false;
+
+    console.log("validar");
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+
+    if ($("#id_nome").val() == '') {
+        $("#id_nome").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_nome").removeClass('input-error');
+    }
+
+    if ($("#id_telefone").val() == '') {
+        $("#id_telefone").addClass('input-error');
+
+        hasError = true;
+    }
+    else {
+        if ($("#id_telefone").val().length < 14) {
+            $("#id_telefone").addClass('input-error');
+            $("#id_telefone").focus();
+
+            hasError = true;
+            Swal.fire("Aviso", "Insira um número com DDD", "warning");
+            return false;
+        }
+        else {
+            $("#id_telefone").removeClass('input-error');
+        }
+    }
+
+     if ($("#id_email").val() != '') {
+        if (pattern.test($("#id_email").val()) === false) {
+            $("#id_email").addClass('input-error');
+            $("#id_email").focus();
+            hasError = true;
+            Swal.fire("Aviso", "Endereço de e-mail inválido!", "warning");
+            return false;
+        }
+        else {
+            $("#id_email").removeClass('input-error');
+        }
+    }
+    else {
+        $("#id_email").addClass('input-error');
+        // $("#id_email").focus();
+        hasError = true;
+        // Swal.fire("Aviso", "Insira um e-mail válido!", "warning");
+        // return false;
+    }
+
+    if ($("#id_cidade").val() == '') {
+        $("#id_cidade").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_cidade").removeClass('input-error');
+    }
+
+    if (hasError) {
+        return false;
+    }
+    else {
+        formTrabalhe = false;
+        $("#botao-send").css({'display' : 'none'});
+        $("#loader-send").css({'display' : 'block'});
+        $("form").submit();
+    }
+}
+
+function validarFormContato() {
+    var hasError = false;
+
+    console.log("validar");
+    var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
+
+    if ($("#id_nome").val() == '') {
+        $("#id_nome").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_nome").removeClass('input-error');
+    }
+
+    if ($("#id_telefone").val() == '') {
+        $("#id_telefone").addClass('input-error');
+
+        hasError = true;
+    }
+    else {
+        if ($("#id_telefone").val().length < 14) {
+            $("#id_telefone").addClass('input-error');
+            $("#id_telefone").focus();
+
+            hasError = true;
+            Swal.fire("Aviso", "Insira um número com DDD", "warning");
+            return false;
+        }
+        else {
+            $("#id_telefone").removeClass('input-error');
+        }
+    }
+
+     if ($("#id_email").val() != '') {
+        if (pattern.test($("#id_email").val()) === false) {
+            $("#id_email").addClass('input-error');
+            $("#id_email").focus();
+            hasError = true;
+            Swal.fire("Aviso", "Endereço de e-mail inválido!", "warning");
+            return false;
+        }
+        else {
+            $("#id_email").removeClass('input-error');
+        }
+    }
+    else {
+        $("#id_email").addClass('input-error');
+        // $("#id_email").focus();
+        hasError = true;
+        // Swal.fire("Aviso", "Insira um e-mail válido!", "warning");
+        // return false;
+    }
+
+    if ($("#id_mensagem").val() == '') {
+        $("#id_mensagem").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_mensagem").removeClass('input-error');
+    }
+
+    if ($("#id_tipo").val() == '') {
+        $("#id_tipo").addClass('input-error');
+        hasError = true;
+    }
+    else {
+        $("#id_tipo").removeClass('input-error');
+    }
+
+    if (hasError) {
+        return false;
+    }
+    else {
+        formTrabalhe = false;
+        $("#botao-send").css({'display' : 'none'});
+        $("#loader-send").css({'display' : 'block'});
+        $("form").submit();
+    }
+}

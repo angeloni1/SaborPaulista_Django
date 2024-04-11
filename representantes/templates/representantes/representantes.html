@@ -51,23 +51,35 @@
                    preencha o formulário que entraremos em contato</p>
                 </div>
                 <div class="" style="">
-                    <form method="POST" action="" class="rounded p-2 p-md-4" style="" >
+                    <form method="POST" action="" class="rounded p-2 p-md-4" style="" id="formulario">
                           {% csrf_token %}
                         {{form.as_p}}
                           <div class="col-12" style="display:flex; align-items:center; margin:10px 0; justify-content:space-between; padding:0;">
                             <div>
-                                <span class="ltx-btn-wrap">
+                                <span class="ltx-btn-wrap" id="botao-send">
                                     <span class="ltx-btn-wrap">
-                                        <input class="btn btn-primary btn-send" style="margin-left:0;" type="submit" value="Enviar">
+                                        <input class="btn btn-primary btn-send" style="margin-left:0;" type="button" value="Enviar" onclick="validarFormRepresentantes();">
                                     </span>
-                                </span><span class="ajax-loader"></span>
+                                </span>
+                                <span class="ajax-loader" id="loader-send" style="display: none;">
+                                    <img src="{%static 'img/loader.svg' %}"  style="width: 70px;"/>
+                                </span>
                             </div>
                         </div>
-                        {% if enviado %}
-                        <div  class="fs alert alert-success" role="alert">
-                            Sua mensagem foi enviada com sucesso!
-                        </div>
-                        {% endif %}
+                            {% if enviado %}
+                            <script>
+                                document.getElementById("formulario").scrollIntoView();
+                            </script>
+                            <div  class="fs alert alert-success" role="alert">
+                                Sua mensagem foi enviada com sucesso!
+                            </div>
+                            {% else %}
+                            <script>
+                                document.getElementById("formulario").scrollIntoView();
+                            </script>
+
+                            {% endif %}
+
 
                     </form>
                 </div>

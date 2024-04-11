@@ -7885,3 +7885,8 @@ p.checkout-coupon input[type=text]:focus {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+.input-error {
+    border: 1px solid #ff8282 !important;
+    box-shadow: 0 0 5px #ffabab  !important;
+}

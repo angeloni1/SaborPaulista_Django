@@ -491,6 +491,9 @@ body {
 #trabalhe > label {
     grid-column: col-start / span 4;
 }
+#formulario > label {
+    grid-column: col-start / span 4;
+}
 
 .fs {
       grid-column: col-start / span 12;
@@ -529,6 +532,7 @@ body {
     grid-row: 6;
     color: #f00;
     font-weight: 500;
+    text-align: left;
 }
 
 .contat-itens {

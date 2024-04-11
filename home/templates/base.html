@@ -198,7 +198,7 @@
                                     {% comment %} @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link a-btn px-4" }) {% endcomment %}
                                 </li>
                                 <li class="nav-item menu-item px-0" id="sobreNosLi">
-                                    <a class="nav-link a-btn px-3 {%if 'trabalheConosco' in request.path %} menu-active {%endif %}" onclick="travaSubMenu(this)">Sobre Nós</a>
+                                    <a class="nav-link a-btn px-3 {%if 'trabalhe-conosco' in request.path or 'sobre-nos' in request.path %} menu-active {%endif %}" onclick="travaSubMenu(this)">Sobre Nós</a>
                                     <div class="subMenu">
                                         <ul>
                                             <li class="nav-item menu-item px-0">
