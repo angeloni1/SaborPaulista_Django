@@ -866,7 +866,7 @@
             novoProdutoCarrinho += '   <li id="produto' + i + '">' +
                 '<div class="tpcart__item">' +
                 ' <div class="tpcart__img">' +
-                '  <img src="' + carrinho[i]['img'] + '" alt="">' +
+                '  <img src="' + sbpPath +  carrinho[i]['img'].replace('..', '') + '" alt="">' +
                 '<div class="tpcart__del">' +
                 '  <a href="#"></a>' +
                 ' </div>' +
