@@ -1035,8 +1035,6 @@
                 itensCarrinho = itensCarrinho;
             }
 
-            debugger;
-
             var existeItem = itensCarrinho.findIndex(x => x.id == id);
             console.log(existeItem);
 
@@ -1171,7 +1169,7 @@
                 let number = '5519988935849';
                 let msg = 'Olá, gostaria de orçamento pros seguintes produtos \n\n';
                 itensCarrinho = JSON.parse(localStorage.getItem("itensCarrinho"));
-                for (var i = 0; i < itensCarrinho.length - 1; i++) {
+                for (var i = 0; i < itensCarrinho.length; i++) {
                     msg += itensCarrinho[i].quantidade + ' Unidades de ' + itensCarrinho[i].nome + ' \n ';
                 }
 
@@ -1190,7 +1188,7 @@
                 let number = '5519988935849';
                 let msg = 'Olá, gostaria de orçamento pros seguintes produtos \n\n';
                 itensCarrinho = JSON.parse(localStorage.getItem("itensCarrinho"));
-                for (var i = 0; i < itensCarrinho.length - 1; i++) {
+                for (var i = 0; i < itensCarrinho.length; i++) {
                     msg += itensCarrinho[i].quantidade + ' Unidades de ' + itensCarrinho[i].nome + ' \n ';
                 }
 
